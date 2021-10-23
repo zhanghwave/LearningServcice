@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.swing.filechooser.FileSystemView;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.List;
@@ -32,6 +33,11 @@ public class ExportExcelTest {
 
     @Test
     public void exportExcel() {
+
+        // 获取桌面路径
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        String desktop = fsv.getHomeDirectory().getPath();
+        System.out.println(desktop);
         //获取数据
         StudentExample studentExample = new StudentExample();
         StudentExample.Criteria criteria = studentExample.createCriteria();
